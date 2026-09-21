@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dean's Student Advisory Council — Cornell Dyson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Manrope:wght@300;400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --carnelian: #B31B1B;
+    --carnelian-deep: #7C0E0E;
+    --carnelian-soft: #D85959;
+    --ink: #1A1A1A;
+    --ink-soft: #3A3A3A;
+    --paper: #FFFFFF;
+    --paper-warm: #FFFFFF;
+    --paper-white: #FFFFFF;
+    --rule: #1A1A1A;
+    --rule-soft: rgba(26, 26, 26, 0.12);
+    --gold: #C5A572;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    font-weight: 400;
+    overflow-x: hidden;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--carnelian);
+    outline-offset: 2px;
+  }
+
+  .display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'opsz' 144, 'SOFT' 0, 'WONK' 0;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+
+  .display-italic {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+    font-weight: 300;
+  }
+
+  .mono-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* ============ SCROLL REVEAL ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Fallback: if JS doesn't load, show everything */
+  .no-js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.72);
+    border-bottom: 1px solid var(--rule-soft);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    transition: background 0.3s ease;
+  }
+  .nav.scrolled {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 18px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-logo {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--rule-soft);
+  }
+
+  .nav-brand-text {
+    line-height: 1.15;
+  }
+  .nav-brand-text .council {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .nav-brand-text .sub {
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 3px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.2s;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 1.5px;
+    background: var(--carnelian);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--carnelian); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--carnelian);
+    color: var(--paper) !important;
+    padding: 10px 22px;
+    border-radius: 0;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--carnelian-deep); }
+
+  /* Mobile menu toggle */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--ink);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-toggle svg { display: block; }
+
+  /* Mobile nav overlay */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--paper);
+    flex-direction: column;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .mobile-nav.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .mobile-nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+  .mobile-nav-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--ink);
+  }
+  .mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-nav-links li {
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .mobile-nav-links a {
+    display: block;
+    padding: 20px 0;
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .mobile-nav-links a:hover { color: var(--carnelian); }
+  .mobile-nav-cta {
+    margin-top: auto;
+    display: block;
+    text-align: center;
+    background: var(--carnelian);
+    color: var(--paper);
+    padding: 18px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    height: 100svh;
+    overflow: hidden;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero-image {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    min-height: 640px;
+    background-image: url('header.jpg');
+    background-size: cover;
+    background-position: calc(50% + 200px) center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 18, 18, 0.58);
+    pointer-events: none;
+  }
+
+  .hero-image-meta {
+    position: absolute;
+    bottom: 32px;
+    left: 48px;
+    z-index: 2;
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .hero-image-meta .mono-label {
+    color: var(--paper);
+  }
+  .hero-image-meta .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FF4444;
+    box-shadow: 0 0 0 4px rgba(255, 68, 68, 0.25);
+    animation: pulse 2s infinite;
+  }
+  .hero-image-meta .building-tag {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+
+  .hero-content {
+    position: relative;
+    padding: 80px 48px 100px;
+    max-width: 1400px;
+    margin: -80px auto 0;
+    background: var(--paper);
+    z-index: 3;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 60px;
+    color: var(--ink-soft);
+  }
+  .hero-meta .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--carnelian);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: none; }
+    }
+  }
+
+  .hero-script {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 2;
+    padding: 0 56px;
+    font-family: 'Pinyon Script', cursive;
+    font-weight: 400;
+    color: var(--paper);
+    font-size: clamp(56px, 11vw, 168px);
+    line-height: 0.98;
+    letter-spacing: 0.005em;
+    text-align: center;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  .hero-script .write-line {
+    display: block;
+    /* leave room below the baseline so cursive descenders aren't clipped */
+    clip-path: inset(-0.12em 100% -0.28em -0.12em);
+    animation: writeIn 1.7s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+  }
+  .hero-script .line2 {
+    animation-delay: 0.8s;
+    animation-fill-mode: both;
+    color: var(--carnelian);
+  }
+  @keyframes writeIn {
+    to { clip-path: inset(-0.12em -0.12em -0.28em -0.12em); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-script .write-line { clip-path: none; animation: none; }
+  }
+
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: end;
+    border-top: 1px solid var(--rule);
+    padding-top: 40px;
+  }
+
+  .hero-lead {
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 400;
+    max-width: 600px;
+    color: var(--ink);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+  }
+  .stat {
+    border-left: 2px solid var(--carnelian);
+    padding-left: 16px;
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    margin-top: 8px;
+  }
+
+  /* ============ SECTION HEADER ============ */
+  section {
+    padding: 100px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .sec-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 40px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+  }
+  .sec-header .left {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+  }
+  .sec-num {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--carnelian);
+    font-weight: 500;
+  }
+  .sec-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .sec-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: right;
+    max-width: 240px;
+  }
+
+  /* Hide section index numbers (01 / 07…) and eyebrow descriptors across all sections */
+  .sec-num,
+  .sec-eyebrow { display: none; }
+
+  /* ============ MISSION ============ */
+  /* sits above the sticky hero and scrolls up over it, closing the gap */
+  .mission {
+    background: var(--paper);
+    position: relative;
+    z-index: 1;
+  }
+  .mission-wrap {
+    padding: 100px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+  }
+  .mission-lead {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .mission-lead .em {
+    font-style: italic;
+    color: var(--carnelian);
+  }
+  .mission-objectives {
+    display: grid;
+    gap: 24px;
+  }
+  .objective {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .objective:last-child { border-bottom: none; }
+  .obj-num {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--carnelian);
+    line-height: 1;
+  }
+  .objective h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .objective p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ============ INITIATIVES (auto-scrolling marquee) ============ */
+  .init-marquee {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    /* soft fade at both edges */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+  }
+  .init-marquee:active { cursor: grabbing; }
+  .init-marquee::-webkit-scrollbar { display: none; }
+  .init-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    padding: 16px 4px 24px;
+  }
+  .init-card {
+    flex: 0 0 320px;
+    width: 320px;
+    padding: 34px 30px;
+    border: 1px solid var(--rule-soft);
+    border-radius: 8px;
+    background: var(--paper);
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 10px 30px -18px rgba(26,26,26,0.35);
+    transition: background 0.3s ease, transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+  /* pop on hover: lift, shadow, carnelian border accent */
+  .init-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 22px 44px -18px rgba(179,27,27,0.35);
+    border-color: var(--carnelian);
+  }
+
+  .init-content {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .init-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .init-num {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--carnelian);
+    transition: color 0.3s;
+  }
+  .init-status {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s;
+  }
+  .init-status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--carnelian);
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+  .init-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    transition: color 0.3s;
+  }
+  .init-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    flex-grow: 1;
+    transition: color 0.3s;
+  }
+  .init-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+  .init-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--rule-soft);
+    border-radius: 20px;
+    color: var(--ink-soft);
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .init-tag svg {
+    width: 11px;
+    height: 11px;
+    stroke: var(--carnelian);
+    flex-shrink: 0;
+  }
+
+  /* ============ SUBCOMMITTEES ============ */
+  .subcom {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 0;
+    max-width: none;
+  }
+  .subcom-wrap {
+    padding: 100px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .subcom .sec-header {
+    border-color: rgba(250, 246, 239, 0.2);
+  }
+  .subcom .sec-title { color: var(--paper); }
+  .subcom .sec-eyebrow { color: rgba(250, 246, 239, 0.6); }
+  .subcom .sec-num { color: var(--carnelian-soft); }
+
+  .subcom-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 60px;
+  }
+  .subcom-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 220px;
+    gap: 32px;
+    align-items: start;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(250, 246, 239, 0.15);
+  }
+  .subcom-num {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--carnelian-soft);
+  }
+  .subcom-row h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+    color: var(--paper);
+  }
+  .subcom-row p {
+    font-size: 14px;
+    color: rgba(250, 246, 239, 0.65);
+    line-height: 1.6;
+  }
+  .subcom-leads {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250, 246, 239, 0.7);
+    line-height: 1.8;
+    text-align: right;
+  }
+
+  /* ============ VOICES (testimonials) ============ */
+  .voices {
+    background: transparent;
+    margin: 0;
+    max-width: none;
+  }
+  .voices-wrap {
+    padding: 100px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .voices-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    margin-top: 40px;
+  }
+  .voice {
+    border-left: 2px solid var(--carnelian);
+    padding-left: 32px;
+  }
+  .voice-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .voice-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 60px;
+    color: var(--carnelian);
+    line-height: 0.5;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .voice-attr {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .voice-attr .name { color: var(--ink); }
+  .voice-attr .role {
+    color: var(--ink-soft);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .voice-attr::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--carnelian);
+  }
+
+  /* ============ COUNCIL MEMBERS ============ */
+  .council-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule-soft);
+    border-left: 1px solid var(--rule-soft);
+  }
+  .member {
+    padding: 28px;
+    border-right: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+    transition: background 0.3s;
+    cursor: pointer;
+  }
+  .member:hover { background: transparent; }
+  .member-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    background: transparent;
+    margin-bottom: 18px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .member-photo .initials {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    color: var(--carnelian);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+  .member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .member:hover .member-photo img {
+    transform: scale(1.03);
+  }
+  .member-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(179, 27, 27, 0.08));
+    pointer-events: none;
+  }
+  .member-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .member-role {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--carnelian);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .member-email {
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+    word-break: break-all;
+  }
+  .member-email:hover { color: var(--carnelian); }
+
+  /* ============ RECRUITMENT TIMELINE ============ */
+  .recruitment {
+    margin-top: 56px;
+    border: 1px solid var(--rule-soft);
+    background: transparent;
+    padding: 56px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .recruitment::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--carnelian);
+  }
+  .recruitment-inner { max-width: 640px; margin: 0 auto; }
+  .recruitment-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--carnelian);
+    font-weight: 600;
+  }
+  .recruitment-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 12px 0 20px;
+    color: var(--ink);
+  }
+  .recruitment-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border: 1px solid var(--rule-soft);
+    background: var(--paper);
+    padding: 10px 20px;
+    margin-bottom: 20px;
+  }
+  .recruitment-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--carnelian);
+    animation: pulse 2s infinite;
+  }
+  .recruitment-note {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .recruitment-note a {
+    color: var(--carnelian);
+    text-decoration: none;
+    border-bottom: 1px solid var(--carnelian);
+  }
+
+  /* ============ SECTION BACKGROUNDS ============ */
+  /* Initiatives: photo behind at hero darkness; cards stay solid, title light */
+  #initiatives {
+    background-color: var(--ink);
+    background-image:
+      linear-gradient(rgba(18,18,18,0.58), rgba(18,18,18,0.58)),
+      url('dsac.jpg');
+    background-size: cover;
+    background-position: center;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    position: relative;
+    z-index: 1;
+  }
+  #initiatives .sec-header,
+  #initiatives .init-marquee {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #initiatives .init-marquee { margin-top: 40px; }
+  #initiatives .sec-title { color: var(--paper); }
+  #initiatives .sec-header { border-color: rgba(255,255,255,0.28); }
+  /* Member Voices: photo behind at hero darkness, light text on top */
+  .voices {
+    background-color: var(--ink);
+    background-image:
+      linear-gradient(rgba(14,14,14,0.72), rgba(14,14,14,0.72)),
+      url('dysondeans.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+  }
+  .voices .sec-title { color: var(--paper); }
+  .voices .sec-header { border-color: rgba(255,255,255,0.25); }
+  .voices .voice-quote { color: var(--paper); }
+  .voices .voice-attr .name { color: var(--paper); }
+  .voices .voice-attr .role { color: rgba(255,255,255,0.7); }
+  /* Council: pure white, full-bleed */
+  #council {
+    background: var(--paper-white);
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  #council .sec-header,
+  #council .council-grid,
+  #council .recruitment {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ============ FORM ============ */
+  .form-section {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 0;
+    max-width: none;
+    position: relative;
+    z-index: 1;
+  }
+  .form-wrap {
+    padding: 100px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .form-section .sec-header { border-color: rgba(250, 246, 239, 0.2); }
+  .form-section .sec-title { color: var(--paper); }
+  .form-section .sec-eyebrow { color: rgba(250, 246, 239, 0.6); }
+  .form-section .sec-num { color: var(--carnelian-soft); }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .form-intro h3 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(48px, 6.5vw, 92px);
+    font-weight: 400;
+    line-height: 1.02;
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+  }
+  .form-intro h3 .em {
+    font-style: italic;
+    color: var(--carnelian-soft);
+  }
+  .form-intro h3 .script {
+    font-family: 'Pinyon Script', cursive;
+    color: var(--carnelian-soft);
+    font-size: 1.3em;
+    line-height: 0.5;
+    display: inline-block;
+    transform: translateY(0.08em) rotate(-3deg);
+    margin: 0 0.05em;
+    font-weight: 400;
+  }
+  .form-intro p {
+    font-size: 16px;
+    color: rgba(250, 246, 239, 0.75);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .form-contact {
+    border-top: 1px solid rgba(250, 246, 239, 0.15);
+    padding-top: 24px;
+    font-size: 13px;
+    color: rgba(250, 246, 239, 0.65);
+    line-height: 1.7;
+  }
+  .form-contact strong {
+    display: block;
+    color: var(--paper);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .form-contact a {
+    color: var(--carnelian-soft);
+    text-decoration: none;
+  }
+  .form-contact a:hover { text-decoration: underline; }
+
+  form { display: grid; gap: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .field label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: rgba(250, 246, 239, 0.75);
+    font-weight: 500;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(250, 246, 239, 0.3);
+    color: var(--paper);
+    padding: 10px 0;
+    font-family: inherit;
+    font-size: 16px;
+    transition: border-color 0.2s;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: rgba(250, 246, 239, 0.35);
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-bottom-color: var(--carnelian-soft);
+  }
+  .field textarea { min-height: 100px; resize: vertical; }
+  .field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3e%3cpath d='M2 4l4 4 4-4' fill='none' stroke='%23FAF6EF' stroke-width='1.5'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    cursor: pointer;
+  }
+  .field select option { background: var(--ink); color: var(--paper); }
+
+  .submit-btn {
+    background: var(--carnelian);
+    color: var(--paper);
+    border: none;
+    padding: 18px 32px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    justify-self: start;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+  }
+  .submit-btn:hover { background: var(--carnelian-deep); }
+  .submit-btn:active { transform: scale(0.98); }
+  .submit-btn::after {
+    content: '\2192';
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+  .submit-btn:hover::after { transform: translateX(4px); }
+
+  /* ============ HANDBOOK ============ */
+  .handbook {
+    padding: 130px 48px;
+    max-width: none;
+    margin: 0;
+    background: var(--paper-white);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    min-height: 92vh;
+  }
+  .handbook-card {
+    border: 1px solid var(--rule-soft);
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    background: var(--paper-white);
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  .handbook-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 60px; height: 60px;
+    border-top: 1px solid var(--carnelian);
+    border-left: 1px solid var(--carnelian);
+  }
+  .handbook-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 60px; height: 60px;
+    border-bottom: 1px solid var(--carnelian);
+    border-right: 1px solid var(--carnelian);
+  }
+  .handbook h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .handbook h3 .em {
+    font-style: italic;
+    color: var(--carnelian);
+  }
+  .handbook p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .handbook .btn-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--carnelian);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--carnelian);
+    padding-bottom: 4px;
+    transition: gap 0.2s;
+  }
+  .handbook .btn-link::after {
+    content: '\2192';
+    font-size: 16px;
+    transition: transform 0.2s;
+  }
+  .handbook .btn-link:hover::after { transform: translateX(4px); }
+  .handbook-visual {
+    min-height: 420px;
+    background: var(--paper-white);
+    border: none;
+    text-decoration: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    perspective: 1400px;
+  }
+
+  /* ---- 3D book (ported from techprep-gh/3d-book-animation) ---- */
+  /* thickness of the book (pages depth) */
+  .book3d { --bw: 270px; --bh: 351px; --bt: 58px;
+    width: var(--bw);
+    height: var(--bh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bookFloat 6s ease-in-out infinite;
+  }
+  .book3d-inner {
+    width: var(--bw);
+    height: var(--bh);
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(-30deg);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+  /* opens flat to face the viewer only when hovering the book itself */
+  .book3d-inner:hover { transform: rotateY(0deg); }
+
+  .book3d-cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    object-fit: cover;
+    border: 2px solid var(--carnelian-deep);
+    border-radius: 3px 6px 6px 3px;
+    box-shadow: 2px 3px 9px rgba(30,30,30,0.14), 0 0 34px 6px rgba(179, 27, 27, 0.18);
+    z-index: 2;
+    background: var(--paper-white);
+  }
+  .book3d-pages {
+    position: absolute;
+    top: 3px;
+    height: calc(var(--bh) - 6px);
+    width: var(--bt);
+    background: repeating-linear-gradient(
+      90deg,
+      #fff 0px, #fff 1px, #efe9dd 2px, #efe9dd 3px
+    );
+    transform: translateX(calc(var(--bw) - var(--bt) / 2 - 3px)) rotateY(90deg) translateX(calc(var(--bt) / 2));
+  }
+  .book3d-back {
+    position: absolute;
+    top: 0; left: 0;
+    height: var(--bh);
+    width: var(--bw);
+    background: var(--carnelian-deep);
+    border-radius: 3px 6px 6px 3px;
+    transform: translateZ(calc(-1 * var(--bt)));
+    box-shadow: -5px 0 20px 3px rgba(30,30,30,0.16);
+  }
+
+  @keyframes bookFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .book3d { animation: none; }
+    .book3d-inner { transition: none; }
+  }
+
+  /* ============ CODE OF CULTURE ============ */
+  .culture {
+    padding: 100px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .culture-intro {
+    max-width: 800px;
+    margin-bottom: 60px;
+  }
+  .culture-intro p {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .culture-intro p .quote {
+    font-style: italic;
+    color: var(--carnelian);
+  }
+  .culture-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .pillar {
+    padding: 48px 36px 48px 0;
+    border-right: 1px solid var(--rule-soft);
+    position: relative;
+  }
+  .pillar:last-child { border-right: none; padding-right: 0; }
+  .pillar:not(:first-child) { padding-left: 36px; }
+  .pillar-num {
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    color: var(--carnelian);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: 0.1em;
+  }
+  .pillar-num::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule-soft);
+  }
+  .pillar-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 28px;
+    color: var(--carnelian);
+  }
+  .pillar h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .pillar h3 .em {
+    font-style: italic;
+    color: var(--carnelian);
+  }
+  .pillar p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .culture-motto {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule-soft);
+    text-align: center;
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(48px, 6vw, 80px);
+    color: var(--carnelian);
+    line-height: 1;
+    transform: rotate(-1deg);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 48px 40px;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(250, 246, 239, 0.15);
+  }
+  .footer-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    max-width: 380px;
+    color: var(--paper);
+  }
+  .footer-brand .em { font-style: italic; color: var(--carnelian-soft); }
+  footer h4 {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: rgba(250, 246, 239, 0.6);
+    font-weight: 600;
+  }
+  footer ul { list-style: none; }
+  footer li { margin-bottom: 8px; }
+  footer a {
+    color: rgba(250, 246, 239, 0.85);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--carnelian-soft); }
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 40px auto 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(250, 246, 239, 0.5);
+  }
+
+  /* ============ SUCCESS TOAST ============ */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 28px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-left: 3px solid var(--carnelian);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .toast.show {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 980px) {
+    .nav-inner { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .nav-toggle { display: block; }
+    .mobile-nav { display: flex; }
+
+    section, .mission-wrap, .voices-wrap, .form-wrap, .subcom-wrap, .handbook { padding-left: 24px; padding-right: 24px; }
+    .hero-content { padding: 60px 24px 80px; }
+    .hero-script { padding: 0 24px; }
+    .hero-script::after { left: 24px; }
+    .hero-image-meta { left: 24px; bottom: 24px; }
+    .hero-bottom, .mission-grid, .form-grid, .handbook-card { grid-template-columns: 1fr; gap: 40px; }
+    .hero-stats { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .stat-num { font-size: 36px; }
+    .initiatives-grid { grid-template-columns: 1fr; }
+    .culture-grid { grid-template-columns: 1fr; }
+    .pillar { border-right: none; border-bottom: 1px solid var(--rule-soft); padding: 32px 0 !important; }
+    .pillar:last-child { border-bottom: none; }
+    .council-grid { grid-template-columns: 1fr 1fr; }
+    .subcom-grid, .voices-grid { grid-template-columns: 1fr; }
+    .subcom-row { grid-template-columns: 50px 1fr; }
+    .subcom-leads { grid-column: 1 / -1; text-align: left; padding-left: 50px; margin-top: -8px; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .sec-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .sec-eyebrow { text-align: left; }
+    .handbook h3 { font-size: 36px; }
+    .handbook-card { padding: 36px; }
+    .form-intro h3 { font-size: 32px; }
+  }
+
+  @media (max-width: 600px) {
+    .council-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .hero-content h1 { font-size: clamp(48px, 12vw, 64px); }
+    .hero-stats { grid-template-columns: 1fr; }
+    .hero-image { min-height: 520px; height: 88svh; }
+    .hero-content { margin-top: -60px; padding-top: 48px; }
+    .mission-lead { font-size: 26px; }
+    .voices-grid { gap: 32px; }
+    .voice-quote { font-size: 20px; }
+    .culture-motto { font-size: clamp(36px, 10vw, 56px); }
+    .handbook-card { padding: 24px; }
+    .footer-bottom { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body class="no-js">
+
+<!-- ============ NAV ============ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <img src="dyson.svg" alt="Cornell Dyson SC Johnson College of Business" class="nav-logo" width="120" height="44">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#initiatives">Initiatives</a></li>
+      <li><a href="#council">Council</a></li>
+      <li><a href="#handbook">Handbook</a></li>
+    </ul>
+    <a href="#submit" class="nav-cta">Submit a Request</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="document.getElementById('mobile-nav').classList.add('open'); this.setAttribute('aria-expanded','true');">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Navigation menu">
+  <div class="mobile-nav-top">
+    <div class="nav-brand-text">
+      <div class="council">DSAC</div>
+    </div>
+    <button class="mobile-nav-close" aria-label="Close menu" onclick="document.getElementById('mobile-nav').classList.remove('open'); document.querySelector('.nav-toggle').setAttribute('aria-expanded','false');">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="#mission" onclick="document.getElementById('mobile-nav').classList.remove('open')">Mission</a></li>
+    <li><a href="#initiatives" onclick="document.getElementById('mobile-nav').classList.remove('open')">Initiatives</a></li>
+    <li><a href="#council" onclick="document.getElementById('mobile-nav').classList.remove('open')">Council</a></li>
+    <li><a href="#handbook" onclick="document.getElementById('mobile-nav').classList.remove('open')">Handbook</a></li>
+  </ul>
+  <a href="#submit" class="mobile-nav-cta" onclick="document.getElementById('mobile-nav').classList.remove('open')">Submit a Request</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-image" role="img" aria-label="Warren Hall at Cornell University">
+    <h1 class="hero-script" aria-label="The student voice of Dyson">
+      <span class="write-line" aria-hidden="true">The student voice</span>
+      <span class="write-line line2" aria-hidden="true">of Dyson.</span>
+    </h1>
+  </div>
+</section>
+
+<!-- ============ MISSION ============ -->
+<div class="mission" id="mission">
+  <div class="mission-wrap">
+    <div class="sec-header">
+      <div class="left">
+        <span class="sec-num">01 / 07</span>
+        <h2 class="sec-title">Our Mission</h2>
+      </div>
+      <div class="sec-eyebrow">Established Spring 2022 — Charles H. Dyson School</div>
+    </div>
+
+    <div class="mission-grid">
+      <div class="mission-lead reveal">
+        As Dyson is ever-growing and ever-evolving, this team of students was established with the express purpose of <span class="em">advising the Dean</span> and other school leaders on what matters most to undergraduates.
+      </div>
+      <div class="mission-objectives">
+        <div class="objective reveal">
+          <div class="obj-num">i.</div>
+          <div>
+            <h3>Listen broadly.</h3>
+            <p>Engage Dyson undergraduates from different backgrounds and experiences so every voice and opinion is heard at the table.</p>
+          </div>
+        </div>
+        <div class="objective reveal">
+          <div class="obj-num">ii.</div>
+          <div>
+            <h3>Bridge the gap.</h3>
+            <p>Represent and communicate with key Dyson student organizations and act as the connection between the student body and the Dean's office.</p>
+          </div>
+        </div>
+        <div class="objective reveal">
+          <div class="obj-num">iii.</div>
+          <div>
+            <h3>Drive real change.</h3>
+            <p>Initiate and support proposals, plans, and actions to improve the holistic Dyson student experience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ INITIATIVES ============ -->
+<section id="initiatives">
+  <div class="sec-header">
+    <div class="left">
+      <span class="sec-num">03 / 07</span>
+      <h2 class="sec-title">Current Initiatives</h2>
+    </div>
+    <div class="sec-eyebrow">Active Projects — Spring 2026</div>
+  </div>
+
+  <div class="init-marquee" id="init-marquee">
+    <div class="init-track">
+      <a class="init-card" href="https://www.instagram.com/p/Dcr5UTXR7KG/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener">
+        <div class="init-content">
+          <div class="init-top">
+            <span class="init-num">01</span>
+          </div>
+          <h3>Unoffice Hours</h3>
+          <p>Casual, drop-in hours to connect directly with the council and share what's on your mind.</p>
+          <div class="init-tags">
+            <span class="init-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M17 6a3 3 0 0 1 0 6"/></svg>
+              DUC
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a class="init-card" href="https://dysondistricts.vercel.app/" target="_blank" rel="noopener">
+        <div class="init-content">
+          <div class="init-top">
+            <span class="init-num">02</span>
+          </div>
+          <h3>Dyson Districts</h3>
+          <p>Reimagining how Dyson students connect across class years and concentrations through a district-based community model.</p>
+          <div class="init-tags">
+            <span class="init-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M17 6a3 3 0 0 1 0 6"/></svg>
+              DUC
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <div class="init-card">
+        <div class="init-content">
+          <div class="init-top">
+            <span class="init-num">03</span>
+          </div>
+          <h3>Internships &amp; New Member Finance Education</h3>
+          <p>Expanding freshman and sophomore summer internship opportunities alongside a finance-focused new member education program.</p>
+          <div class="init-tags">
+            <span class="init-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Career
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="init-card">
+        <div class="init-content">
+          <div class="init-top">
+            <span class="init-num">04</span>
+          </div>
+          <h3>Research Opportunity Expansion Plan</h3>
+          <p>Broadening access to undergraduate research opportunities across Dyson and Cornell.</p>
+          <div class="init-tags">
+            <span class="init-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></svg>
+              Academic
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="init-card">
+        <div class="init-content">
+          <div class="init-top">
+            <span class="init-num">05</span>
+          </div>
+          <h3>Scholarship &amp; Financial Aid Information</h3>
+          <p>Centralizing scholarship and financial aid resources so students can find the support they need.</p>
+          <div class="init-tags">
+            <span class="init-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M16 7c-1-1.3-2.5-2-4-2-2 0-4 1-4 3s2 3 4 3 4 1 4 3-2 3-4 3c-1.5 0-3-0.7-4-2"/></svg>
+              Access
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HANDBOOK ============ -->
+<section class="handbook" id="handbook">
+  <div class="handbook-card reveal">
+    <div>
+      <h3>The Dyson <span class="em">Handbook.</span></h3>
+      <p>Built by DSAC for Dyson students. The handbook covers academic navigation, student services, and a masterclass on navigating Cornell and Dyson.</p>
+      <a href="https://docs.google.com/document/d/1HeeFyeMYyRfLUJPi_bJMRp01BHc14Fa-/edit?usp=sharing&ouid=102686267285627592369&rtpof=true&sd=true" class="btn-link" target="_blank" rel="noopener">Read the Handbook</a>
+    </div>
+    <a class="handbook-visual" href="https://docs.google.com/document/d/1HeeFyeMYyRfLUJPi_bJMRp01BHc14Fa-/edit?usp=sharing&ouid=102686267285627592369&rtpof=true&sd=true" target="_blank" rel="noopener" aria-label="Open the Dyson Undergraduate Student Handbook">
+      <div class="book3d">
+        <div class="book3d-inner">
+          <img class="book3d-cover" src="handbook-cover.png" alt="Dyson Undergraduate Student Handbook cover">
+          <div class="book3d-pages"></div>
+          <div class="book3d-back"></div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ VOICES ============ -->
+<div class="voices">
+  <div class="voices-wrap">
+    <div class="sec-header">
+      <div class="left">
+        <span class="sec-num">05 / 07</span>
+        <h2 class="sec-title">Member Voices</h2>
+      </div>
+      <div class="sec-eyebrow">In Their Own Words — Past and Present Council Members</div>
+    </div>
+
+    <div class="voices-grid">
+      <div class="voice reveal">
+        <span class="voice-mark" aria-hidden="true">&ldquo;</span>
+        <p class="voice-quote">DSAC is an incredible platform for motivated students to ideate and create. I had an idea to improve the transfer experience, and leveraging DSAC's connections, I was able to roll it out to all new transfer students.</p>
+        <div class="voice-attr">
+          <div>
+            <div class="name">Sam Strauss</div>
+            <div class="role">Former Transfer Rep</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="voice reveal">
+        <span class="voice-mark" aria-hidden="true">&ldquo;</span>
+        <p class="voice-quote">It is paramount to share your opinions on any items on our agenda — we are gathered as a Council because of our diverse and unique perspectives that represent a larger Dyson community.</p>
+        <div class="voice-attr">
+          <div>
+            <div class="name">Kellie Graves</div>
+            <div class="role">Former Council Member</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="voice reveal">
+        <span class="voice-mark" aria-hidden="true">&ldquo;</span>
+        <p class="voice-quote">I made the most of my time in DSAC by not holding back. Although I was sometimes nervous, I made it a point to make my disagreements clear — even with the Dean himself.</p>
+        <div class="voice-attr">
+          <div>
+            <div class="name">Anna Haraka</div>
+            <div class="role">Former Council Member</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="voice reveal">
+        <span class="voice-mark" aria-hidden="true">&ldquo;</span>
+        <p class="voice-quote">If there's an issue you want to see resolved, go out of your way to talk to staff members beyond the Dean. Come into meetings with hard facts about what can and can't be done.</p>
+        <div class="voice-attr">
+          <div>
+            <div class="name">Talia Singer</div>
+            <div class="role">Former Council Member</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ COUNCIL ============ -->
+<section id="council">
+  <div class="sec-header">
+    <div class="left">
+      <span class="sec-num">06 / 07</span>
+      <h2 class="sec-title">The Council</h2>
+    </div>
+    <div class="sec-eyebrow">Spring 2026 — Eleven Members</div>
+  </div>
+
+  <div class="council-grid">
+    <div class="member reveal">
+      <div class="member-photo"><img src="headshots/dev-shukla.jpg" alt="Headshot of Dev Shukla"></div>
+      <div class="member-name">Dev Shukla</div>
+      <div class="member-role">Chair</div>
+      <a href="mailto:ds2395@cornell.edu" class="member-email">ds2395@cornell.edu</a>
+    </div>
+    <div class="member reveal">
+      <div class="member-photo"><img src="headshots/elana-kane.jpg" alt="Headshot of Elana Kane"></div>
+      <div class="member-name">Elana Kane</div>
+      <div class="member-role">Class of '28</div>
+      <a href="mailto:enk35@cornell.edu" class="member-email">enk35@cornell.edu</a>
+    </div>
+    <div class="member reveal">
+      <div class="member-photo"><img src="headshots/vincent-daly.jpg" alt="Headshot of Vincent Daly"></div>
+      <div class="member-name">Vincent Daly</div>
+      <div class="member-role">Class of '28</div>
+      <a href="mailto:vad35@cornell.edu" class="member-email">vad35@cornell.edu</a>
+    </div>
+    <div class="member reveal">
+      <div class="member-photo"><img src="headshots/jason-liaw.jpg" alt="Headshot of Jason Liaw"></div>
+      <div class="member-name">Jason Liaw</div>
+      <div class="member-role">Class of '29</div>
+      <a href="mailto:jl4738@cornell.edu" class="member-email">jl4738@cornell.edu</a>
+    </div>
+    <div class="member reveal">
+      <div class="member-photo"><img src="headshots/ella-roberts.jpg" alt="Headshot of Ella Roberts"></div>
+      <div class="member-name">Ella Roberts</div>
+      <div class="member-role">Class of '29</div>
+      <a href="mailto:ehr39@cornell.edu" class="member-email">ehr39@cornell.edu</a>
+    </div>
+    <div class="member reveal">
+      <div class="member-photo"><img src="headshots/kaylee-nunez.jpg" alt="Headshot of Kaylee Nunez"></div>
+      <div class="member-name">Kaylee Nunez</div>
+      <div class="member-role">DICE Rep</div>
+      <a href="mailto:kjn52@cornell.edu" class="member-email">kjn52@cornell.edu</a>
+    </div>
+    <div class="member reveal">
+      <div class="member-photo"><img src="headshots/ankita-chakraborty.jpg" alt="Headshot of Ankita Chakraborty"></div>
+      <div class="member-name">Ankita Chakraborty</div>
+      <div class="member-role">DUC Rep</div>
+      <a href="mailto:ac2979@cornell.edu" class="member-email">ac2979@cornell.edu</a>
+    </div>
+    <div class="member reveal">
+      <div class="member-photo"><img src="headshots/sachika-mann.jpg" alt="Headshot of Sachika Mann"></div>
+      <div class="member-name">Sachika Mann</div>
+      <div class="member-role">DUC Rep</div>
+      <a href="mailto:sm2967@cornell.edu" class="member-email">sm2967@cornell.edu</a>
+    </div>
+    <div class="member reveal">
+      <div class="member-photo"><img src="headshots/jake-quintana.jpg" alt="Headshot of Jake Quintana"></div>
+      <div class="member-name">Jake Quintana</div>
+      <div class="member-role">DICE Rep</div>
+      <a href="mailto:jeq7@cornell.edu" class="member-email">jeq7@cornell.edu</a>
+    </div>
+    <div class="member reveal">
+      <div class="member-photo" style="background: var(--carnelian); color: var(--paper); display: flex; align-items: center; justify-content: center;">
+        <span class="initials" style="color: var(--paper); font-size: 36px;">+</span>
+      </div>
+      <div class="member-name">Join Us</div>
+      <div class="member-role">Recruitment — Mid-October</div>
+      <a href="#submit" class="member-email">Express interest &rarr;</a>
+    </div>
+  </div>
+
+  <div class="recruitment reveal" id="recruitment">
+    <div class="recruitment-inner">
+      <h3 class="recruitment-title">Recruitment Timeline</h3>
+      <p class="recruitment-status"><span class="recruitment-dot" aria-hidden="true"></span> Coming Soon</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORM ============ -->
+<div class="form-section" id="submit">
+  <div class="form-wrap">
+    <div class="form-grid">
+      <div class="form-intro reveal">
+        <h3>We want to <span class="script">hear</span> from you.</h3>
+        <div class="form-contact">
+          <strong>Direct Contact</strong>
+          Reach the Chair, Dev Shukla, at <a href="mailto:dsac@cornell.edu">dsac@cornell.edu</a>
+        </div>
+      </div>
+
+      <form id="dsac-form">
+        <div class="form-row">
+          <div class="field">
+            <label for="field-name">Name <span style="opacity:0.5; text-transform:none; letter-spacing:0;">(optional)</span></label>
+            <input type="text" id="field-name" name="name" placeholder="Jane Doe" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="field-email">Email <span style="opacity:0.5; text-transform:none; letter-spacing:0;">(optional)</span></label>
+            <input type="email" id="field-email" name="email" placeholder="jd123@cornell.edu" autocomplete="email">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="field-year">Class Year</label>
+            <select id="field-year" name="year">
+              <option value="">Select year</option>
+              <option>Class of '26</option>
+              <option>Class of '27</option>
+              <option>Class of '28</option>
+              <option>Class of '29</option>
+              <option>Transfer Student</option>
+              <option>Graduate / Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="field-category">Category</label>
+            <select id="field-category" name="category" required>
+              <option value="">Select a category</option>
+              <option>Academic Policy</option>
+              <option>Career &amp; Internships</option>
+              <option>Student Life &amp; Community</option>
+              <option>Diversity, Equity &amp; Inclusion</option>
+              <option>Facilities &amp; Resources</option>
+              <option>New Initiative Proposal</option>
+              <option>Feedback for the Dean</option>
+              <option>Something Else</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="field-subject">Subject</label>
+          <input type="text" id="field-subject" name="subject" placeholder="One-line summary of your request" required>
+        </div>
+
+        <div class="field">
+          <label for="field-message">Tell us more</label>
+          <textarea id="field-message" name="message" placeholder="What's on your mind? Include any context, examples, or proposals — the more specific, the more we can do." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit to Council</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Success toast -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#D85959" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M7 10l2 2 4-4"/></svg>
+  Thanks — your submission has been received.
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        Charles H. Dyson School<br>
+        <span class="em">Dean's Student Advisory Council.</span>
+      </div>
+      <div style="margin-top: 24px; font-size: 13px; color: rgba(250,246,239,0.5); max-width: 380px; line-height: 1.6;">
+        Warren Hall, Cornell University<br>
+        Ithaca, NY 14853-6201
+      </div>
+    </div>
+    <div>
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#initiatives">Initiatives</a></li>
+        <li><a href="#council">Council Members</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connected Bodies</h4>
+      <ul>
+        <li><a href="https://dyson.cornell.edu/about/leadership/dyson-advisory-council-dac/">Dyson Advisory Council (DAC)</a></li>
+        <li><a href="https://dyson.cornell.edu/about/leadership/drac/">Dyson Recent Alumni Council</a></li>
+        <li><a href="https://dyson.cornell.edu/about/leadership/dice/">DICE</a></li>
+        <li><a href="#">Dyson Undergraduate Council</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Reach Us</h4>
+      <ul>
+        <li><a href="mailto:dsac@cornell.edu">dsac@cornell.edu</a></li>
+        <li><a href="#submit">Submit Feedback</a></li>
+        <li><a href="https://dyson.cornell.edu">Dyson School &rarr;</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Cornell Dyson &middot; Dean's Student Advisory Council</div>
+  </div>
+</footer>
+
+<script>
+  // Remove no-js class so CSS reveal animations work
+  document.body.classList.remove('no-js');
+
+  // Scroll reveal with IntersectionObserver
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    // Stagger delay within groups
+    const parent = el.parentElement;
+    const siblings = parent ? Array.from(parent.querySelectorAll(':scope > .reveal')) : [];
+    const idx = siblings.indexOf(el);
+    if (idx > 0) {
+      el.style.transitionDelay = (idx * 0.08) + 's';
+    }
+    revealObserver.observe(el);
+  });
+
+  // Sticky nav background change + hero fade-up on scroll
+  const nav = document.querySelector('.nav');
+  const heroImage = document.querySelector('.hero-image');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 60);
+    if (heroImage && !prefersReducedMotion) {
+      const h = heroImage.offsetHeight || 1;
+      const p = Math.min(Math.max(y / h, 0), 1);
+      // fade out as the mission section rises up over the pinned hero
+      heroImage.style.opacity = String(1 - p * 0.9);
+    }
+  }, { passive: true });
+
+  // Form submission with toast
+  document.getElementById('dsac-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    this.reset();
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  });
+
+  // Initiatives: auto-scrolling marquee (scroll/drag to speed up)
+  (function () {
+    const marquee = document.getElementById('init-marquee');
+    const track = marquee && marquee.querySelector('.init-track');
+    if (!marquee || !track) return;
+
+    // duplicate the cards so the loop is seamless
+    track.innerHTML += track.innerHTML;
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let baseSpeed = reduce ? 0 : 0.6;   // px per frame, auto
+    let vel = 0;                        // extra velocity from user input
+    let dragging = false;
+
+    const half = () => track.scrollWidth / 2;
+
+    function tick() {
+      if (!dragging) marquee.scrollLeft += baseSpeed + vel;
+      vel *= 0.90;                      // decay the boost
+      const h = half();
+      if (marquee.scrollLeft >= h) marquee.scrollLeft -= h;
+      else if (marquee.scrollLeft < 0) marquee.scrollLeft += h;
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    // pointer drag to scrub
+    let startX = 0, startLeft = 0;
+    marquee.addEventListener('pointerdown', (e) => {
+      dragging = true; startX = e.clientX; startLeft = marquee.scrollLeft;
+      marquee.setPointerCapture(e.pointerId);
+    });
+    marquee.addEventListener('pointermove', (e) => {
+      if (dragging) marquee.scrollLeft = startLeft - (e.clientX - startX);
+    });
+    const endDrag = () => { dragging = false; };
+    marquee.addEventListener('pointerup', endDrag);
+    marquee.addEventListener('pointercancel', endDrag);
+  })();
+</script>
+
+</body>
+</html>
